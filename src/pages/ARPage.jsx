@@ -23,6 +23,7 @@ function ARPage() {
               productVersion: "1.0"
             }
           )
+
         window.unityInstance = unityRef.current
         setStatus("Unity Loaded")
       } catch (err) {
@@ -43,17 +44,15 @@ function ARPage() {
 
   return (
     <>
-      <div
-        style={{
-          position: "absolute",
-          top: 10,
-          left: 10,
-          zIndex: 20,
-          background: "#000",
-          color: "#fff",
-          padding: "5px"
-        }}
-      >
+      <div style={{
+        position: "absolute",
+        top: 10,
+        left: 10,
+        zIndex: 20,
+        background: "#000",
+        color: "#fff",
+        padding: "5px"
+      }}>
         {status}
       </div>
 
