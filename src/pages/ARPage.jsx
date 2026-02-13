@@ -7,7 +7,7 @@ function ARPage() {
 
   useEffect(() => {
     const script = document.createElement("script")
-    script.src = "/unity/Build/Build.loader.js"
+    script.src = "/unity/Build/WebGL_Builds.loader.js"
 
     script.onload = async () => {
       try {
@@ -15,9 +15,9 @@ function ARPage() {
           await window.createUnityInstance(
             containerRef.current,
             {
-              dataUrl: "/unity/Build/Build.data",
-              frameworkUrl: "/unity/Build/Build.framework.js",
-              codeUrl: "/unity/Build/Build.wasm",
+              dataUrl: "/unity/Build/WebGL_Builds.data",
+              frameworkUrl: "/unity/Build/WebGL_Builds.framework.js",
+              codeUrl: "/unity/Build/WebGL_Builds.wasm",
               companyName: "AR",
               productName: "Viewer",
               productVersion: "1.0"
