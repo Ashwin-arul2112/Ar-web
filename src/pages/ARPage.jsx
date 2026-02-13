@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 
 function ARPage() {
-  const canvasRef = useRef(null)
+  const containerRef = useRef(null)
   const unityRef = useRef(null)
   const [status, setStatus] = useState("Loading Unity...")
 
@@ -13,7 +13,7 @@ function ARPage() {
       try {
         unityRef.current =
           await window.createUnityInstance(
-            canvasRef.current,
+            containerRef.current,
             {
               dataUrl: "/unity/Build/Build.data",
               frameworkUrl: "/unity/Build/Build.framework.js",
@@ -33,6 +33,10 @@ function ARPage() {
     }
 
     document.body.appendChild(script)
+
+    return () => {
+      unityRef.current?.Quit()
+    }
   }, [])
 
   const startAR = () => {
@@ -44,15 +48,17 @@ function ARPage() {
 
   return (
     <>
-      <div style={{
-        position: "absolute",
-        top: 10,
-        left: 10,
-        zIndex: 20,
-        background: "#000",
-        color: "#fff",
-        padding: "5px"
-      }}>
+      <div
+        style={{
+          position: "absolute",
+          top: 10,
+          left: 10,
+          zIndex: 20,
+          background: "#000",
+          color: "#fff",
+          padding: "5px"
+        }}
+      >
         {status}
       </div>
 
@@ -68,8 +74,9 @@ function ARPage() {
         Enter AR
       </button>
 
-      <canvas
-        ref={canvasRef}
+      {/* IMPORTANT: Unity must load inside DIV */}
+      <div
+        ref={containerRef}
         style={{
           width: "100vw",
           height: "100vh"

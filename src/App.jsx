@@ -1,22 +1,17 @@
-import { QRCodeCanvas } from "qrcode.react"
 import React from "react"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Home from "./pages/Home"
+import ARPage from "./pages/ARPage"
 
-function Home() {
-
-  const arUrl = `${window.location.origin}/ar`
-
+function App() {
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Scan to Open AR</h1>
-
-      <QRCodeCanvas
-        value={arUrl}
-        size={200}
-      />
-
-      <p>{arUrl}</p>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/ar" element={<ARPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
-export default Home
+export default App
