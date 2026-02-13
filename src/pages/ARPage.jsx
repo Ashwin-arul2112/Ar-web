@@ -71,7 +71,7 @@ function ARPage() {
           zIndex: 20
         }}
       >
-        Enter AR
+        enter AR
       </button>
 
       {/* IMPORTANT: Unity must load inside DIV */}
